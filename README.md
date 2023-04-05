@@ -33,3 +33,5 @@ yarn build
 ```
 yarn lint
 ```
+#### Start Vue App
+npm run serve
