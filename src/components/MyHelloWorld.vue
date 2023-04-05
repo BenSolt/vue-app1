@@ -6,11 +6,13 @@
         <h3>Number: {{ count }}</h3>
         <p>paragraph text goes here...</p>
         <h3>Color: {{ color }}</h3>
+        
         <h3 class="todoTitle">To Do List:</h3>
+
         <div class="todo-list">
             <ul class="todoBox">
-                <li class="initial" :class="{ color }"  @click="changeColor" v-for="x in todos" :key="x.id">
-                    {{ x.text }}
+                <li v-for="item in todos" v-bind:class="{ active: item.active }" @click="toggleActive(item)" :key="item.id">
+                    {{ item.text }}
                 </li>
             </ul>
         </div>
@@ -26,12 +28,11 @@ export default {
     data() {
         return {
             todos: [
-                { text: 'learn JavaScript' },
-                { text: 'learn Vue.js' },
-                { text: 'Build Something Awesome' }
+                { id: 1, text: 'learn JavaScript' },
+                { id: 2, text: 'learn Vue.js' },
+                { id: 3, text: 'Build Something Awesome' }
             ],
             count: 0,
-            color: false
         };
     },
     methods: {
@@ -42,8 +43,9 @@ export default {
         subtract() {
             this.count--
         },
-        changeColor() {
-            this.color = !this.color
+
+        toggleActive(item) {
+            item.active = !item.active;
         }
 
     },
