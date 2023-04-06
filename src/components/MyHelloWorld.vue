@@ -17,7 +17,11 @@
         </div>
 
         <div>
-            {{ info }}
+            <!-- {{ info }} -->
+            <div v-for="pet in info" :key="pet.id">
+                {{ pet }}
+                <!-- <img className="dog-image" alt="random dog" src={{pet}} /> -->
+            </div>
         </div>
     </div>
 </template>
@@ -37,7 +41,7 @@ export default {
                 { id: 3, text: 'Build Something Awesome' }
             ],
             count: 0,
-            info: null
+            info: []
         };
     },
     methods: {
@@ -59,19 +63,19 @@ export default {
             .get('https://dog.ceo/api/breed/mix/images/random/15')
             //.then(response => (this.info = response))
             .then((response) => {
-                 this.info = response.data.message;
-                 console.log(this.info);
-             });
+                this.info = response.data.message;
+                console.log(this.info);
+            });
     }
 
-//     mounted() {
-//         axios
-//             .get(`https://dog.ceo/api/breed/${breed}/images/random/15`)
-//             .then((response) => {
-//                 const doggos = response.data.message;
-//                 console.log(doggos);
-//             });
-//     }, [breed]);
+    //     mounted() {
+    //         axios
+    //             .get(`https://dog.ceo/api/breed/${breed}/images/random/15`)
+    //             .then((response) => {
+    //                 const doggos = response.data.message;
+    //                 console.log(doggos);
+    //             });
+    //     }, [breed]);
 };
 
 
