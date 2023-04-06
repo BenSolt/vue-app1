@@ -5,8 +5,7 @@
         <button @click="subtract">Subtract</button>
         <h3>Number: {{ count }}</h3>
         <p>paragraph text goes here...</p>
-        <h3>Color: {{ color }}</h3>
-        
+
         <h3 class="todoTitle">To Do List:</h3>
 
         <div class="todo-list">
@@ -16,10 +15,15 @@
                 </li>
             </ul>
         </div>
+
+        <div>
+            {{ info }}
+        </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'MyHelloWorld',
     props: {
@@ -33,6 +37,7 @@ export default {
                 { id: 3, text: 'Build Something Awesome' }
             ],
             count: 0,
+            info: null
         };
     },
     methods: {
@@ -49,6 +54,25 @@ export default {
         }
 
     },
+    mounted() {
+        axios
+            .get('https://dog.ceo/api/breed/mix/images/random/15')
+            //.then(response => (this.info = response))
+            .then((response) => {
+                 this.info = response.data.message;
+                 console.log(this.info);
+             });
+    }
+
+//     mounted() {
+//         axios
+//             .get(`https://dog.ceo/api/breed/${breed}/images/random/15`)
+//             .then((response) => {
+//                 const doggos = response.data.message;
+//                 console.log(doggos);
+//             });
+//     }, [breed]);
 };
+
 
 </script>
