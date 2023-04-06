@@ -16,11 +16,13 @@
             </ul>
         </div>
 
-        <div>
+        <button @click="setBreed('mastiff')">Mastiff</button>
+
+        <div class="dog-card-container">
             <!-- {{ info }} -->
-            <div v-for="pet in info" :key="pet.id">
-                {{ pet }}
-                <!-- <img className="dog-image" alt="random dog" src={{pet}} /> -->
+            <div v-for="pet in info" :key="pet.id" class="dog-card">
+                <h2>{{ this.breed }}</h2>
+                <img className="dog-image" alt="random dog" :src="pet" />
             </div>
         </div>
     </div>
@@ -28,10 +30,20 @@
 
 <script>
 import axios from 'axios'
+import { useState } from '../composables/state';
+
 export default {
     name: 'MyHelloWorld',
     props: {
         msg: String
+    },
+    setup() {
+        const [breed, setBreed] = useState('mix');
+
+        return {
+            breed,
+            setBreed,
+        };
     },
     data() {
         return {
@@ -41,7 +53,7 @@ export default {
                 { id: 3, text: 'Build Something Awesome' }
             ],
             count: 0,
-            info: []
+            info: [],
         };
     },
     methods: {
@@ -55,13 +67,11 @@ export default {
 
         toggleActive(item) {
             item.active = !item.active;
-        }
-
+        },
     },
     mounted() {
         axios
-            .get('https://dog.ceo/api/breed/mix/images/random/15')
-            //.then(response => (this.info = response))
+            .get(`https://dog.ceo/api/breed/${this.breed}/images/random/15`)
             .then((response) => {
                 this.info = response.data.message;
                 console.log(this.info);

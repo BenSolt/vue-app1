@@ -35,3 +35,37 @@ button:hover {
 li:hover {
     cursor:pointer;
 }
+
+/* ///////////////////////////////////////////////////////////// */
+
+.dog-card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .dog-card {
+    background: #006aff;
+    color: black;
+    width: 128px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    border-radius: 5px;
+    border: 3px solid black;
+  }
+
+.dog-image {
+    border-top-style: none;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-width: 3px;
+    border-radius: 5px 5px 0 0;
+    width: 128px;
+    height: 140px;
+    object-fit: scale;
+    flex-shrink: 2;
+  }
