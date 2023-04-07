@@ -2,17 +2,20 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
   <MyHelloWorld  msg="My Vue Todo Component"/>
+  <DogApi />
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-import MyHelloWorld from './components/MyHelloWorld.vue'
+//import MyHelloWorld from './components/MyHelloWorld.vue'
+import DogApi from './components/DogApi.vue'
 
 export default {
   name: 'App',
   components: {
     //HelloWorld,
-    MyHelloWorld
+    // MyHelloWorld,
+    DogApi
   }
 }
 </script>

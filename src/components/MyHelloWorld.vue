@@ -16,35 +16,19 @@
             </ul>
         </div>
 
-        <button @click="setBreed('mastiff')">Mastiff</button>
 
-        <div class="dog-card-container">
-            <!-- {{ info }} -->
-            <div v-for="pet in info" :key="pet.id" class="dog-card">
-                <h2>{{ this.breed }}</h2>
-                <img className="dog-image" alt="random dog" :src="pet" />
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
-import { useState } from '../composables/state';
+
 
 export default {
     name: 'MyHelloWorld',
     props: {
         msg: String
     },
-    setup() {
-        const [breed, setBreed] = useState('mix');
 
-        return {
-            breed,
-            setBreed,
-        };
-    },
     data() {
         return {
             todos: [
@@ -69,23 +53,6 @@ export default {
             item.active = !item.active;
         },
     },
-    mounted() {
-        axios
-            .get(`https://dog.ceo/api/breed/${this.breed}/images/random/15`)
-            .then((response) => {
-                this.info = response.data.message;
-                console.log(this.info);
-            });
-    }
-
-    //     mounted() {
-    //         axios
-    //             .get(`https://dog.ceo/api/breed/${breed}/images/random/15`)
-    //             .then((response) => {
-    //                 const doggos = response.data.message;
-    //                 console.log(doggos);
-    //             });
-    //     }, [breed]);
 };
 
 
