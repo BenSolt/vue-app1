@@ -34,7 +34,8 @@ export default {
             todos: [
                 { id: 1, text: 'learn JavaScript' },
                 { id: 2, text: 'learn Vue.js' },
-                { id: 3, text: 'Build Something Awesome' }
+                { id: 3, text: 'Build Something Awesome' },
+                { id: 4, text: 'Build another app' }
             ],
             count: 0,
             info: [],
